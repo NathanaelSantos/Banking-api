@@ -1,4 +1,4 @@
-package org.acme.Exception;
+package org.acme.Exception.subscription;
 
 public class SubscriptionNotActiveException extends RuntimeException {
     public SubscriptionNotActiveException(Long userId) {
