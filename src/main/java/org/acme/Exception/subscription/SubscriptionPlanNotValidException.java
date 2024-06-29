@@ -1,4 +1,4 @@
-package org.acme.Exception;
+package org.acme.Exception.subscription;
 
 public class SubscriptionPlanNotValidException extends RuntimeException {
     public SubscriptionPlanNotValidException(Long userId) {
