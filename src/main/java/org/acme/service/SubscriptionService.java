@@ -2,10 +2,10 @@ package org.acme.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import org.acme.Exception.SubscriptionExpiredException;
-import org.acme.Exception.SubscriptionNotActiveException;
-import org.acme.Exception.SubscriptionNotFoundException;
-import org.acme.Exception.SubscriptionPlanNotValidException;
+import org.acme.Exception.subscription.SubscriptionExpiredException;
+import org.acme.Exception.subscription.SubscriptionNotActiveException;
+import org.acme.Exception.subscription.SubscriptionNotFoundException;
+import org.acme.Exception.subscription.SubscriptionPlanNotValidException;
 import org.acme.model.UserSubscription;
 import org.acme.repository.UserSubscriptionRepository;
 
