@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 @ApplicationScoped
-public class SubscriptionService {
+public class UserSubscriptionService {
 
-    private static final Logger log = Logger.getLogger(SubscriptionService.class.getName());
+    private static final Logger log = Logger.getLogger(UserSubscriptionService.class.getName());
 
     @Inject
     UserSubscriptionRepository userSubscriptionRepository;
@@ -33,13 +33,13 @@ public class SubscriptionService {
             throw new SubscriptionNotActiveException(userId);
         }
 
-        //Verificar se a assinatura ainda é válida (não expirou):
+        // Check if the subscription is still valid (not expired)
         if(subscription.getValidUntil() == null || subscription.getValidUntil().before(new Date())){
             log.warning("Subscription for userId: " + userId + " has expired or the expiry date is null");
             throw new SubscriptionExpiredException(userId);
         }
 
-        //Verificar se o plano do usuário é adequado:
+        // Check if the user's plan is adequate
         if(!"PREMIUM".equalsIgnoreCase(subscription.getPlan())){
             log.warning("Subscription for userId: " + userId + " is not premium");
             throw new SubscriptionPlanNotValidException(userId);
