@@ -1,6 +1,5 @@
 package org.acme;
 
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -14,7 +13,14 @@ import org.acme.Exception.subscription.SubscriptionNotFoundException;
 import org.acme.Exception.subscription.SubscriptionPlanNotValidException;
 import org.acme.model.BankModel;
 import org.acme.service.BankService;
-import org.acme.service.SubscriptionService;
+import org.acme.service.UserSubscriptionService;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 import java.util.List;
 
@@ -26,12 +32,19 @@ public class Application {
     @Inject
     BankService bankService;
     @Inject
-    SubscriptionService subscriptionService;
-
+    UserSubscriptionService subscriptionService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"user", "premium"})
+    @Tag(name = "Get all banks", description = "Operations related to banks")
+    @Operation(summary = "Get all banks", description = "Returns a list of all banks if the user's subscription is valid")
+    @APIResponses({
+            @APIResponse(
+                    responseCode = "200",
+                    description = "List of banks",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = BankModel.class, type = SchemaType.ARRAY))
+            )
+    })
     public Response getAllBanks() {
         try {
             if(subscriptionService.isSubscriptionValid(getCurrentUserId())){
@@ -49,3 +62,4 @@ public class Application {
         return 1L;
     }
 }
+
