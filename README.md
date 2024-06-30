@@ -1,58 +1,26 @@
-# code-with-quarkus
+# Banking Institutions API Documentation
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Overview
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+This project implements a RESTful API for managing information about banking institutions, utilizing Quarkus as the framework of choice. Key technologies include RESTEasy (JAX-RS) for endpoint management, Hibernate ORM with Panache for seamless database integration, PostgreSQL for robust data storage, and SmallRye JWT for secure authentication.
 
-## Running the application in dev mode
+## Technologies Used
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+- **Quarkus**: High-performance, cloud-native Java framework.
+- **RESTEasy (JAX-RS)**: Simplifies development of RESTful APIs.
+- **Hibernate ORM with Panache**: Provides easy data access and persistence.
+- **PostgreSQL**: Reliable open-source relational database management system.
+- **SmallRye JWT**: Implements JWT-based authentication for secure API access.
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+## Features
 
-## Packaging and running the application
+- **List Banking Institutions**: Retrieve a list of all banking institutions.
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+## API Documentation - Swagger
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+Explore the API endpoints and parameters using Swagger UI:
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+- **Swagger UI**: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui)
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+---
 
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/code-with-quarkus-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
-# api-banks
-# api-banks
